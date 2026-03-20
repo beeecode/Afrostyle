@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { OrderStageTracker } from "@/components/features/OrderStageTracker";
-import { DashboardContext } from "./layout";
+import { DashboardContext } from "./DashboardContext";
 
 // --- MOCK DATA ---
 
@@ -162,7 +162,7 @@ function OverviewTab() {
                 
                 <div className="flex justify-between items-center bg-afs-gray-50 rounded-md p-2">
                   <div className="w-[140px] shrink-0">
-                    <OrderStageTracker stage={order.stage as any} compact={true} />
+                    <OrderStageTracker currentStage={order.stage as any} compact={true} />
                   </div>
                   <div className={`text-[12px] font-medium flex items-center gap-1.5 ${isUrgent(order.dueDate) ? 'text-red-500' : 'text-afs-gray-500'} text-right`}>
                     {isUrgent(order.dueDate) && <AlertCircle className="w-[14px] h-[14px] shrink-0" />}
@@ -206,7 +206,7 @@ function OverviewTab() {
                       </div>
                     </td>
                     <td className="px-6 py-5 w-[180px]">
-                      <OrderStageTracker stage={order.stage as any} compact={true} />
+                      <OrderStageTracker currentStage={order.stage as any} compact={true} />
                     </td>
                     <td className="px-6 py-5">
                       <div className="text-[14px] font-medium text-afs-black whitespace-nowrap">
@@ -388,7 +388,7 @@ function OrdersTab() {
 
               {/* Middle Row: Full Stage Tracker */}
               <div className="w-full">
-                <OrderStageTracker stage={order.stage as any} compact={false} />
+                <OrderStageTracker currentStage={order.stage as any} compact={false} />
               </div>
 
               {/* Bottom Row */}
